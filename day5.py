@@ -1,9 +1,7 @@
-
-Shopping_lists=[]
-
+stores=[]
 
 class ShoppingList:
-    def _init_(self,store,address):
+    def __init__(self,title,address):
       self.title=title
       self.address=address
       self.item=[]
@@ -17,13 +15,15 @@ class Item:
     self.price = price 
     self.quantity = quantity 
 
+print("1 to add shopping list")
+print("2 to view all Shopping List")
+print("3 to add item into shopping list")
+print("4 to delete item from shopping list")
+print("q to quit")
+
 
 while True:
-  
-    print("Enter 1.add store information:")
-    print("Enter 3.display all shopping_list information:")
-    print("Enter q to quit:")
-
+    
     user_choice  =input("please enter your selection:")
 
   
@@ -31,20 +31,38 @@ while True:
       break
 
     if user_choice== "1":
-      store=input("Enter the name of the store name:")
-      address=input("Enter {street_no} {city}{state}:")
-      shopping_list=ShoppingList(store,address)
-      shopping_list.append(shopping_list)
-      print(shopping_list)
+      store_name=input("Enter the name of the store name:")
+      store_address=input("Enter {street_no} {city}{state}:")
+      shopping_list=ShoppingList(store_name,store_address)
+      stores.append(shopping_list)
+      
 
-    if user_choice== "2":
-        for i in range(0,shopping_lists)):
-          print(f"{shopping_lists[i].store}")
-          store=shopping
-          print(store)
+    elif user_choice== "2":
+      for store in stores:
+          print(store.title)
 
-    store_location=int(input(" select which  store  "))
-    title=input("Item you would like to add to shopping cart:")
-    price=input("cost of and an item  ")
-    shopping_list=shopping_list[store_location-1]
-    shopping_list.item.append[Item]
+    elif user_choice=="3":
+        
+        for i in range(0,len(stores)):
+          store=stores[i]
+          print(f"{i+1}. {store.title}")
+    
+        
+        store_number = int(input("Enter Store Number: "))
+        store = stores[store_number - 1]
+        item_name = input("Enter item name: ")
+        item_price = float(input("Enter item price: ")) 
+        item = Item(item_name, item_price)
+        store.item.append:[item]
+    
+    
+    
+    
+    elif user_choice=="4":
+      
+      for i in range(0,len(stores)):
+        
+        print(f"{i+1}.{stores[i].title}")
+      store_number = int(input("Enter Store Number to delete: "))
+      del stores[store_number-1]
+
